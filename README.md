@@ -1,3 +1,3 @@
 > 
 
-* [2017总结与展望](/essays/2017-summary.md)
+* [2017总结与展望](https://github.com/lxyc/lxyc-blog/issues/1)
