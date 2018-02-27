@@ -8,7 +8,7 @@
 
 ### javascript
 
-* [《javascript高级程序设计》笔记](/1)
+* 《javascript高级程序设计》笔记
     * [01-script元素属性](https://github.com/lxyc/lxyc-blog/issues/2)
     * [02-文档模式](https://github.com/lxyc/lxyc-blog/issues/3)
     * [03-变量及变量检测](https://github.com/lxyc/lxyc-blog/issues/4)
