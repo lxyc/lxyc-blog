@@ -23,6 +23,19 @@
     * [03-变量及变量检测](https://github.com/lxyc/lxyc-blog/issues/4)
     * [04-检测数组的方法](https://github.com/lxyc/lxyc-blog/issues/5)
     * [05-vaueOf()与toString()对比](https://github.com/lxyc/lxyc-blog/issues/6)
+    * [06-undefined和null](https://github.com/lxyc/lxyc-blog/issues/14)
+    * [07-Number类型](https://github.com/lxyc/lxyc-blog/issues/15)
+    * [08-Number数值转换](https://github.com/lxyc/lxyc-blog/issues/16)
+    * [09-String类型及其转换](https://github.com/lxyc/lxyc-blog/issues/17)
+    * [10-短路运算](https://github.com/lxyc/lxyc-blog/issues/18)
+    * [11-关系运算符与相等运算符](https://github.com/lxyc/lxyc-blog/issues/19)
+    * [12-continue、break 和 return](https://github.com/lxyc/lxyc-blog/issues/20)
+    * [13-值类型与引用类型](https://github.com/lxyc/lxyc-blog/issues/21)
+    * [14-数组 稀疏数组 伪数组](https://github.com/lxyc/lxyc-blog/issues/22)
+    * [15-数组方法](https://github.com/lxyc/lxyc-blog/issues/23)
+    * [16-数组方法高级](https://github.com/lxyc/lxyc-blog/issues/24)
+    * [17-正则表达式](https://github.com/lxyc/lxyc-blog/issues/25)
+    * [18-Function类型](https://github.com/lxyc/lxyc-blog/issues/26)
 
 ### vue
 
