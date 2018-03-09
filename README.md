@@ -36,6 +36,14 @@
     * [16-数组方法高级](https://github.com/lxyc/lxyc-blog/issues/24)
     * [17-正则表达式](https://github.com/lxyc/lxyc-blog/issues/25)
     * [18-Function类型](https://github.com/lxyc/lxyc-blog/issues/26)
+    * [19-函数调用模式](https://github.com/lxyc/lxyc-blog/issues/27)
+    * [20-对象数据属性和访问器属性](https://github.com/lxyc/lxyc-blog/issues/28)
+    * [21-创建对象](https://github.com/lxyc/lxyc-blog/issues/29)
+    * [22-原型图解](https://github.com/lxyc/lxyc-blog/issues/30)
+    * [23-继承](https://github.com/lxyc/lxyc-blog/issues/31)
+    * [24-内存与执行环境](https://github.com/lxyc/lxyc-blog/issues/32)
+    * [25-变量对象与解析](https://github.com/lxyc/lxyc-blog/issues/33)
+
 
 ### vue
 
