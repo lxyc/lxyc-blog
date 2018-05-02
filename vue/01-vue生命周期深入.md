@@ -145,7 +145,8 @@ export default {
 ![](/vue/assets/nestPrint2.jpg)
 当父组件data中的值变化时，打印：
 ![](/vue/assets/nestPrint3.jpg)
-
-当组件销毁时，打印：
-![](/vue/assets/nestPrint3.jpg)
+当子组件销毁时，打印：
+![](/vue/assets/nestPrint4.jpg)
+当父组件销毁时，打印：
+![](/vue/assets/nestPrint5.jpg)
 
