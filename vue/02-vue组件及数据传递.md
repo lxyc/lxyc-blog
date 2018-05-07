@@ -69,6 +69,37 @@ export default {
 
 ## 2. 组件的组织
 
+上面提到，`多个组件按照一定规则的组合最终成为一个完整的应用`，因此，我们可以将组件看作是Vue页面中的最小单元，那么应该如何组织组件，整合成一个页面呢？
+
+有这样一个需求：要求按照下图组织页面结构
+![](/vue/assets/compImg.jpg)
+
+我们可以这样组织：
+```html
+<template>
+  <div class="m-body">
+    我是主体内容
+  </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style scoped>
+.m-body {
+  min-height: 500px;
+  color: #fff;
+  padding: 20px;
+  background-color: #39f;
+}
+</style>
+```
+
+
+
 ## 3. 组件之间的数据传递
 
 ### 3.1 props方式
