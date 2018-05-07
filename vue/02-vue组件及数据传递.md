@@ -143,6 +143,9 @@ export default {
 }
 </style>
 ```
+打开Vue调试界面，将看到如下的结构
+![](/vue/assets/compDebug1.jpg)
+
 
 
 ## 3. 组件之间的数据传递
