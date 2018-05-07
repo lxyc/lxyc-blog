@@ -33,18 +33,37 @@ new Vue({
 ```javascript
 const install = function(Vue, opts = {}) {
   // ...
-
   components.map(component => {
     Vue.component(component.name, component);
   });
-  
   // ...
 };
 ```
 可以看出，在其内部也是依次全局注册了`element`中的插件
 
-
 ### 1.2 局部注册
+
+Vue官网上如是说：
+> 全局注册往往是不够理想的。比如，如果你使用一个像 webpack 这样的构建系统，全局注册所有的组件意味着即便你已经不再使用一个组件了，它仍然会被包含在你最终的构建结果中。这造成了用户下载的 JavaScript 的无谓的增加。
+
+正是因为上面的原因，**除了一些常用的基础组件外，尽可能的使用局部注册的方式**
+
+```javascript
+// 普通引入方式
+var ComponentA = { /* ... */ }
+
+// ES6引入方式
+import ComponentA from './ComponentA.vue'
+
+export default {
+  // ...
+  components: {
+    'component-a': ComponentA,
+  }
+}
+```
+
+值得注意的是：**局部注册方式仅能在当前组件中使用，在其子组件中使用需要再次注册**
 
 ## 2. 组件的组织
 
