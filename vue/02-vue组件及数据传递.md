@@ -27,7 +27,21 @@ new Vue({
   render: h => h(App)
 });
 ```
-其中`Vue.use(ElementUI);`
+其中`Vue.use(ElementUI);`的方式便是间接调用了全局组件注册的方式，在`element-ui`内部：
+（插件中，使用`Vue.use()`的方式，相当于调用了其中的install方法）
+
+```javascript
+const install = function(Vue, opts = {}) {
+  // ...
+
+  components.map(component => {
+    Vue.component(component.name, component);
+  });
+  
+  // ...
+};
+```
+可以看出，在其内部也是依次全局注册了`element`中的插件
 
 
 ### 1.2 局部注册
