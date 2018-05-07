@@ -72,6 +72,7 @@ export default {
 上面提到，`多个组件按照一定规则的组合最终成为一个完整的应用`，因此，我们可以将组件看作是Vue页面中的最小单元，那么应该如何组织组件，整合成一个页面呢？
 
 有这样一个需求：要求按照下图组织页面结构
+
 ![](/vue/assets/compImg.jpg)
 
 我们可以这样组织：
@@ -98,6 +99,7 @@ export default {
 </style>
 ```
 按照这种方式，依次写出header、aside、content、footer四个组件，并用一个组件作为这四个组件的父组件来组织页面结构，最后的结构如下：
+
 ![](/vue/assets/compConstruct.jpg)
 
 父组件如下：
@@ -144,6 +146,7 @@ export default {
 </style>
 ```
 打开Vue调试界面，将看到如下的结构
+
 ![](/vue/assets/compDebug1.jpg)
 
 注意：**父组件负责控制容器结构样式（各个直接子组件的位置、大小等），子组件负责其内部的样式，不要在子组件中写自己的容器样式**
