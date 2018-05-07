@@ -82,10 +82,13 @@ export default {
 ```
 
 初始化组件时，打印：
+
 ![](/vue/assets/singlePrint1.jpg)
 当data中的值变化时，打印：
+
 ![](/vue/assets/singlePrint2.jpg)
 当组件销毁时，打印：
+
 ![](/vue/assets/singlePrint3.jpg)
 
 从打印结果可以看出:
@@ -160,16 +163,22 @@ export default {
 ```
 
 初始化组件时，打印：
+
 ![](/vue/assets/nestPrint1.jpg)
 当子组件data中的值变化时，打印：
+
 ![](/vue/assets/nestPrint2.jpg)
 当父组件data中的值变化时，打印：
+
 ![](/vue/assets/nestPrint3.jpg)
 当props改变时，打印：
+
 ![](/vue/assets/nestPrint4.jpg)
 当子组件销毁时，打印：
+
 ![](/vue/assets/nestPrint5.jpg)
 当父组件销毁时，打印：
+
 ![](/vue/assets/nestPrint6.jpg)
 
 从打印结果可以看出:
@@ -194,12 +203,16 @@ export default {
 ```
 
 初始化组件时，打印：
+
 ![](/vue/assets/siblingPrint1.jpeg)
 当child1更新和销毁时，打印：
+
 ![](/vue/assets/siblingPrint2.jpg)
 当child2更新和销毁时，打印：
+
 ![](/vue/assets/siblingPrint3.jpg)
 当父组件销毁时，打印：
+
 ![](/vue/assets/siblingPrint4.jpg)
 
 从打印结果可以看出:
@@ -250,8 +263,10 @@ export default {
 ```
 
 组件初始化时，打印：
+
 ![](/vue/assets/mixinPrint1.jpg)
 组件销毁时，打印：
+
 ![](/vue/assets/mixinPrint2.jpg)
 
 从打印结果可以看出:
