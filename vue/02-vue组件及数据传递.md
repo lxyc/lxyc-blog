@@ -4,12 +4,31 @@
 
 ### 1.1 全局注册
 
-`Vue.component()`创建组件，使用方式：
+`Vue.component()`用来创建全局组件，一旦注册，即可在该实例Vue下的任何子组件中使用，常用于一些使用较为频繁的基础组件，如Alert组件、Button组件、布局组件等
+
+使用方式：
+
 ```javascript
 Vue.component('my-component', {
     // vue实例方法和生命周期（el除外）
 })
 ```
+如果你使用过 `element-ui` ，下面的写法你可能比较熟悉：
+```javascript
+import Vue from 'vue';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+import App from './App.vue';
+
+Vue.use(ElementUI);
+
+new Vue({
+  el: '#app',
+  render: h => h(App)
+});
+```
+其中`Vue.use(ElementUI);`
+
 
 ### 1.2 局部注册
 
