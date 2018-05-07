@@ -158,70 +158,10 @@ export default {
 1. 父子组件间的数据传递
 2. 兄弟组件间的数据传递
 
-### 3.1 prop方式
+### 3.1 $root方式
 
-Vue官网中对prop如是说：
-> 所有的 prop 都使得其父子 prop 之间形成了一个单向下行绑定：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外改变父级组件的状态，从而导致你的应用的数据流向难以理解。
+### 3.2 总线Bus方式
 
-> 额外的，每次父级组件发生更新时，子组件中所有的 prop 都将会刷新为最新的值。这意味着你不应该在一个子组件内部改变 prop。如果你这样做了，Vue 会在浏览器的控制台中发出警告。
-
-建议查看[Vue官网prop](https://cn.vuejs.org/v2/guide/components-props.html)中`单向数据流`部分，用法：
-
-```html
-<!-- 父组件 -->
-<template>
-  <child :msg="msg"></child>
-</template>
-
-<script>
-export default {
-  data(){
-    return{
-      msg: '我是父组件数据',
-    }
-  }
-}
-</script>
-```
-
-```html
-<!-- 子组件 -->
-<template>
-  <p>{{ mdzz }}</p>
-</template>
-
-<script>
-export default {
-  //方式一
-  props: ['msg'],
-  
-  //方式二
-  props: {
-    msg: {
-      // 类型校验，多种类型时[String, Number]
-      type: String,
-      // 必填的字符串
-      required: true,
-      // 默认值，对象和数组了类型必须返回函数
-      default: '',
-      // 校验器校验（精确校验）
-      validator: function(val) {
-        return ['success', 'warning', 'danger'].indexOf(value) !== -1
-      }
-    }
-  },
-}
-</script>
-```
-
-### 3.2 $emit方式
-
-### 3.3 slot方式
-
-### 3.4 $root方式
-
-### 3.5 总线Bus方式
-
-### 3.6 Vuex方式
+### 3.3 Vuex方式
 
 ## 4. 如何优雅的构建基础组件
