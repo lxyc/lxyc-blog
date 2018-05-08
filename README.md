@@ -52,9 +52,5 @@
 
 ### 前端工程化
 
-### 总结与展望
-
-* [2017总结与展望](https://github.com/lxyc/lxyc-blog/issues/1)
-
 
 
