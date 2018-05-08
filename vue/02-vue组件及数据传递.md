@@ -171,25 +171,18 @@ export default {
 
 代码如下：
 
-父级组件：
+父级组件：主要用于
 ```html
-<template>
-  <div class="comp">
-    <m-header :num="num" />
-    <div class="main">
-      <m-side @add="handleAdd" @reset="handleReset" />
-      <m-body :num="num" @change="handleChange" />
-    </div>
-    <m-footer />
+<div class="comp">
+  <m-header :num="num" />
+  <div class="main">
+    <m-side @add="handleAdd" @reset="handleReset" />
+    <m-body :num="num" @change="handleChange" />
   </div>
-</template>
-
-<script>
-import MHeader from './MHeader'
-import MFooter from './MFooter'
-import MBody from './MBody'
-import MSide from './MSide'
-
+  <m-footer />
+</div>
+```
+```javascript
 export default {
   data () {
     return {
@@ -207,14 +200,8 @@ export default {
       this.num = 0
     }
   },
-  components: {
-    MHeader,
-    MFooter,
-    MBody,
-    MSide
-  }
+  // ...
 }
-</script>
 ```
 
 ### 3.1 $root方式
