@@ -171,7 +171,7 @@ export default {
 
 代码如下：
 
-**父级组件**：主要用于数据传递与接收子组件分发的事件来改变对应的变量
+（1）**父级组件**：主要用于数据传递与接收子组件分发的事件来改变对应的变量
 ```html
 <div class="comp">
   <m-header :num="num" />
@@ -204,7 +204,7 @@ export default {
 }
 ```
 
-**Header组件**：接受并展示数值
+（2）**Header组件**：接受并展示数值
 template中仅添加`{{ num }}`
 ```javascript
 props: {
@@ -215,7 +215,7 @@ props: {
 }
 ```
 
-**Side组件**：向上分发增加和重置事件
+（3）**Side组件**：向上分发增加和重置事件
 ```html
 <!-- 新增 -->
 <el-button @click="add">ADD</el-button>
@@ -232,7 +232,7 @@ methods: {
 }
 ```
 
-**Body组件**：监控传值，向上分发事件
+（4）**Body组件**：监控传值，向上分发事件
 ```html
 <!-- 新增 -->
 <el-input-number v-model="currentVal" @change="handleChange"></el-input-number>
@@ -277,7 +277,7 @@ methods: {
 
 上面方法的核心是所有子组件统一管理和操作父组件的数据，子组件负责展示和分发事件，实际操作值的始终在父组件，Vue提供了一个能访问到根组件的方法，官网中如是描述：[处理边界情况](https://cn.vuejs.org/v2/guide/components-edge-cases.html)中访问根实例部分
 
-在入口文件`main.js`中添加：
+（1）在入口文件`main.js`中添加：
 ```javascript
 new Vue({
   data: {
@@ -286,7 +286,7 @@ new Vue({
   // ...
 })
 ```
-在**父组件**中添加：
+（2）在**父组件**中添加：
 ```html
 <!-- 局部注册不作详述 -->
 <m-body>
@@ -294,7 +294,7 @@ new Vue({
 </m-body>
 ```
 
-**新添加的组件**`MBodyItem`
+（3）**新添加的组件**`MBodyItem`
 ```html
 <template>
   <div class="m-body-item">
@@ -318,7 +318,7 @@ export default {
 </script>
 ```
 
-**side组件**：
+（4）**side组件**：
 ```html
 <div class="m-side">
   我是侧边栏{{ $root.rootNum }}
@@ -328,6 +328,16 @@ export default {
 对于 demo 或非常小型的有少量组件的应用来说直接使用$root的方式很方便。不过这个模式扩展到中大型应用来说就不然了，数据量过大不易维护，也不易追踪数据的变化
 
 ### 3.3 总线Bus方式
+
+总线Bus的思路：将事件的注册和触发单独放在一个Vue实例中，点击按钮时触发指定的事件以驱动接下来的操作。Bus总线仅仅是用来驱动事件的，具体的数据操作还是在原有的组件中
+
+在$root的结构基础上，作如下更改：
+（1）原入口文件`main.js`还原，去掉data属性
+（2）新定义一个总线文件`bus.js`
+```javascript
+import Vue from 'vue'
+export default new Vue()
+```
 
 ### 3.4 Vuex方式
 
