@@ -217,7 +217,52 @@ props: {
 
 **Side组件**：向上分发增加和重置事件
 ```html
-<>
+<!-- 新增 -->
+<el-button @click="add">ADD</el-button>
+<el-button @click="reset">RESET</el-button>
+```
+```javascript
+methods: {
+  add () {
+    this.$emit('add')
+  },
+  reset () {
+    this.$emit('reset')
+  }
+}
+```
+
+**Body组件**：监控传值，向上分发事件
+```html
+<!-- 新增 -->
+<el-input-number v-model="currentVal" @change="handleChange"></el-input-number>
+```
+```javascript
+props: {
+  num: {
+    type: Number,
+    default: 0
+  }
+},
+data () {
+  return {
+    currentVal: 0
+  }
+},
+// 外层数据改变时，currentVal值需要同步修改
+watch: {
+  num: {
+    handler (val) {
+      this.currentVal = val
+    },
+    immediate: true
+  }
+},
+methods: {
+  handleChange (val) {
+    this.$emit('change', val)
+  }
+}
 ```
 
 ### 3.1 $root方式
