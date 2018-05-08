@@ -338,6 +338,39 @@ export default {
 import Vue from 'vue'
 export default new Vue()
 ```
+（3）side组件中注册总线事件并显示数据
+```javascript
+import Bus from './bus'
+export default {
+  data () {
+    return {
+      sideNum: 0
+    }
+  },
+  created () {
+    Bus.$on('change', (step) => {
+      this.sideNum += step
+    })
+    Bus.$on('reset', () => {
+      this.sideNum = 0
+    })
+  }
+}
+```
+（4）bodyItem组件中分发总线事件
+```javascript
+import Bus from './bus'
+export default {
+  methods: {
+    add () {
+      Bus.$emit('change', 1)
+    },
+    reset () {
+      Bus.$emit('reset')
+    }
+  }
+}
+```
 
 ### 3.4 Vuex方式
 
