@@ -275,18 +275,56 @@ methods: {
 
 ### 3.2 $root方式
 
-上面方法的核心是所有子组件统一管理和操作父组件的数据，子组件负责展示和分发事件，实际操作值的始终在父组件，Vue提供了一个能访问到根组件的方法，官网中如是描述：
+上面方法的核心是所有子组件统一管理和操作父组件的数据，子组件负责展示和分发事件，实际操作值的始终在父组件，Vue提供了一个能访问到根组件的方法，官网中如是描述：[处理边界情况](https://cn.vuejs.org/v2/guide/components-edge-cases.html)中访问根实例部分
 
 ![](/vue/assets/compImg3.jpg)
 
 在入口文件`main.js`中添加：
-```
+```javascript
 new Vue({
   data: {
     rootNum: 0
   },
   // ...
 })
+```
+在**父组件**中添加：
+```html
+<!-- 局部注册不作详述 -->
+<m-body>
+  <m-body-item></m-body-item>
+</m-body>
+```
+
+**新添加的组件**`MBodyItem`
+```html
+<template>
+  <div class="m-body-item">
+    <el-button @click="add">ADD</el-button>
+    <el-button @click="reset">RESET</el-button>
+  </div>
+</template>
+
+<script>
+// 可直接操作$root中声明的变量
+export default {
+  methods: {
+    add () {
+      this.$root.rootNum += 1
+    },
+    reset () {
+      this.$root.rootNum = 0
+    }
+  }
+}
+</script>
+```
+
+**side组件**：
+```html
+<div class="m-side">
+  我是侧边栏{{ $root.rootNum }}
+</div>
 ```
 
 ### 3.3 总线Bus方式
