@@ -73,7 +73,7 @@ export default {
 
 有这样一个需求：要求按照下图组织页面结构
 
-![](/vue/assets/compImg.jpg)
+![](/vue/assets/compImg1.jpg)
 
 我们可以这样组织：
 ```html
@@ -164,9 +164,58 @@ export default {
 
 现有新的**需求**：在上面例子的基础上，需要满足：header中有一个数值，side中新增重置和增加按钮，body中新增数组输入框，当对按钮和表单作操作时，对应的数值作相应改变
 
+![](/vue/assets/compImg2.jpg)
+
+
 基本**思路**：将数值放在几个组件公共上层组件中，header中prop接受该值，side和body中点击按钮向他们的公共上层组件分发$emit事件，改变该数值，核心思路：**多个组件操作的值均为上层组件的变量**
 
 代码如下：
+
+父级组件：
+```html
+<template>
+  <div class="comp">
+    <m-header :num="num" />
+    <div class="main">
+      <m-side @add="handleAdd" @reset="handleReset" />
+      <m-body :num="num" @change="handleChange" />
+    </div>
+    <m-footer />
+  </div>
+</template>
+
+<script>
+import MHeader from './MHeader'
+import MFooter from './MFooter'
+import MBody from './MBody'
+import MSide from './MSide'
+
+export default {
+  data () {
+    return {
+      num: 0
+    }
+  },
+  methods: {
+    handleAdd () {
+      this.num += 1
+    },
+    handleChange (val) {
+      this.num = val
+    },
+    handleReset () {
+      this.num = 0
+    }
+  },
+  components: {
+    MHeader,
+    MFooter,
+    MBody,
+    MSide
+  }
+}
+</script>
+```
 
 ### 3.1 $root方式
 
