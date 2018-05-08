@@ -171,7 +171,7 @@ export default {
 
 代码如下：
 
-父级组件：主要用于
+父级组件：主要用于数据传递与接收子组件分发的事件来改变对应的变量
 ```html
 <div class="comp">
   <m-header :num="num" />
