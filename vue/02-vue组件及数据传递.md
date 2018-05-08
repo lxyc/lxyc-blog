@@ -171,7 +171,7 @@ export default {
 
 代码如下：
 
-父级组件：主要用于数据传递与接收子组件分发的事件来改变对应的变量
+**父级组件**：主要用于数据传递与接收子组件分发的事件来改变对应的变量
 ```html
 <div class="comp">
   <m-header :num="num" />
@@ -202,6 +202,22 @@ export default {
   },
   // ...
 }
+```
+
+**Header组件**：接受并展示数值
+template中仅添加`{{ num }}`
+```javascript
+props: {
+  num: {
+    type: Number,
+    default: 0
+  }
+}
+```
+
+**Side组件**：向上分发增加和重置事件
+```html
+<>
 ```
 
 ### 3.1 $root方式
