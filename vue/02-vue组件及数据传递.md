@@ -277,8 +277,6 @@ methods: {
 
 上面方法的核心是所有子组件统一管理和操作父组件的数据，子组件负责展示和分发事件，实际操作值的始终在父组件，Vue提供了一个能访问到根组件的方法，官网中如是描述：[处理边界情况](https://cn.vuejs.org/v2/guide/components-edge-cases.html)中访问根实例部分
 
-![](/vue/assets/compImg3.jpg)
-
 在入口文件`main.js`中添加：
 ```javascript
 new Vue({
@@ -326,6 +324,8 @@ export default {
   我是侧边栏{{ $root.rootNum }}
 </div>
 ```
+
+对于 demo 或非常小型的有少量组件的应用来说直接使用$root的方式很方便。不过这个模式扩展到中大型应用来说就不然了，数据量过大不易维护，也不易追踪数据的变化
 
 ### 3.3 总线Bus方式
 
