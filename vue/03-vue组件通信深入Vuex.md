@@ -167,18 +167,10 @@ Vue.use(Vuex)
 
 const debug = process.env.NODE_ENV !== 'production'
 
-const state = {
-
-}
-const getters = {
-
-}
-const mutataions = {
-
-}
-const actions = {
-
-}
+const state = {}
+const getters = {}
+const mutataions = {}
+const actions = {}
 
 export default new Vuex.Store({
   state,
