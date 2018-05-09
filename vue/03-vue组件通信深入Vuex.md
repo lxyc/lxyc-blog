@@ -1,3 +1,5 @@
+**建议：博客中的例子都放在[vue_blog_project](https://github.com/lxyc/vue_blog_project)工程中，推荐结合工程实例与博客一同学习**
+
 上一篇博客中，介绍了多种方法来实现组件之间的通信，但是涉及到深层嵌套和非直接关联组件之间的通信时，都会遇到**无法追踪数据和调试的问题**，vuex可以非常方便的解决组件之间数据传递和数据追踪调试问题，这篇博客将简要的介绍vuex的基本用法，然后完成下面的demo
 
 ![](/vue/assets/shoppingCart.gif)
@@ -205,7 +207,7 @@ new Vue({
 
 ## 3. Vuex 项目实践
 
-**需求**：完成在文章开头看到的动图功能，api数据和功能如下：
+**需求**：完成在文章开头看到的动图功能【注：[demo源码](https://github.com/lxyc/vue_blog_project)】，api数据和功能如下：
 ```javascript
 // 商品列表
 [
@@ -359,3 +361,26 @@ export default {
 </script>
 ```
 
+（4）结合上面所说的最佳实践优化：
+
+在store中新建`mutation-types.js`文件，
+```javascript
+export const SET_PRODUCTS = 'SET_PRODUCTS'
+export const CLEAR_CART_PRODUCTS = 'CLEAR_CART_PRODUCTS'
+```
+
+`mutations.js`作如下更改：
+```javascript
+import * as types from './mutation-types'
+
+export default {
+  [types.SET_PRODUCTS] (state, products) {
+    state.all = products
+  },
+  [types.CLEAR_CART_PRODUCTS] (state) {
+    state.all.forEach(p => {
+      p.quantity = 0
+    })
+  }
+}
+```
