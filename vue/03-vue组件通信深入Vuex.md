@@ -410,4 +410,6 @@ export default {
 }
 ```
 
+另外，**在组件引用mutation部分也需要作相应修改**
+
 在此仅将demo中的核心部分列出，完整的代码请查看[demo源码](https://github.com/lxyc/vue_blog_project)
