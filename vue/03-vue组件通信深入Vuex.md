@@ -97,7 +97,7 @@ store.state.b // -> moduleB 的状态
 
 在组件中使用store中的数据或方法时，按照上面的说法，每次都要`this.$store.`的方式去获取，有没有简单一点的方式呢？辅助函数就是为了解决这个问题
 ```javascript
-// 组件中使用
+// 组件中注册
 import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 
 export default {
@@ -117,7 +117,16 @@ export default {
     ...mapActions(['getAllProducts'])
   }
 }
+
+// 组件中使用
+// 变量
+this.allProducts
+this.products
+// 方法
+this.setProducts()
+this.getAllProducts()
 ```
+由于上面提到，常用的做法是将state中数据使用getter包装后输出，因此，mapState在项目中较少遇到
 
 ## Vuex安装
 
