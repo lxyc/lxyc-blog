@@ -6,14 +6,14 @@
 
 声明：在此仅介绍Vuex精华知识，更详尽的知识请参考[Vuex中文官网](https://vuex.vuejs.org/zh-cn/intro.html)
 
-（1）Vuex是什么？解决了什么问题？
+### 1.1 Vuex是什么？解决了什么问题？
 > Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化
 
 Vuex解决了`多个视图依赖于同一状态`和`来自不同视图的行为需要变更同一状态`的问题，将开发者的精力聚焦于数据的更新而不是数据在组件之间的传递上
 
-（2）Vuex各个模块的作用及用法
+### 1.2 Vuex各个模块的作用及用法
 
-`state`：用于数据的存储，是store中的**唯一数据源**
+（1）`state`：用于数据的存储，是store中的**唯一数据源**
 ```javascript
 // 定义
 new Vuex.Store({
@@ -22,14 +22,36 @@ new Vuex.Store({
   }
   //...
 })
-// 组件中的获取
+// 组件中获取
 this.$store.state.allProducts
 ```
-`mutations`：
-`actions`：
-`module`：
 
-（3）各个模块的辅助函数说明
+（2）`getters`：如vue中的计算属性一样，**基于state数据的二次包装**，常用于数据的筛选和多个数据的相关性计算
+```javascript
+// 定义 
+getters: {
+  cartProducts(state, getters) => (getters.allProducts.filter(p => p.quantity))
+}
+// 组件中获取
+this.$store.getters.cartProducts
+```
+
+（3）`mutations`：类似函数，**改变state数据的唯一途径，且不能用于处理异步事件**
+```javascript
+// 定义
+mutations: {
+  setProducts (state, products) {
+    state.allProducts = products
+  }
+}
+
+// 组件使用
+this.$store.commit('setProducts', {//..参数})
+```
+（4）`actions`：
+（5）`module`：
+
+### 1.3 各个模块的辅助函数说明
 
 
 ## Vuex安装
