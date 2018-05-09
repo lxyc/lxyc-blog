@@ -48,6 +48,7 @@
 
 * [Vue生命周期深入](https://github.com/lxyc/lxyc-blog/issues/34)
 * [Vue组件通信深入](https://github.com/lxyc/lxyc-blog/issues/35)
+* [Vue组件通信深入Vuex](https://github.com/lxyc/lxyc-blog/issues/36)
 
 
 ### react
