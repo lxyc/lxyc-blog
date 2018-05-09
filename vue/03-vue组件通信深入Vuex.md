@@ -64,7 +64,7 @@ actions: {
 this.$store.dispatch('getAllProducts', {//..payload})
 ```
 
-（5）`module`：类似于命名空间，用于项目中将各个模块的状态分开定义和操作，便于维护
+（5）`modules`：类似于命名空间，用于项目中将各个模块的状态分开定义和操作，便于维护
 ```javascript
 // 定义
 const moduleA = {
@@ -126,7 +126,22 @@ this.products
 this.setProducts()
 this.getAllProducts()
 ```
-由于上面提到，常用的做法是将state中数据使用getter包装后输出，因此，mapState在项目中较少遇到
+由于上面提到，常用的做法是将state中数据使用getter包装后输出，因此，mapState在项目中较少遇到，其他三个倒是经常使用，另外，有两个注意项和两个最佳实践：
+注意：
+1. **Mutation 需遵守 Vue 的响应规则**，[见Vuex官网Mutation部分](https://vuex.vuejs.org/zh-cn/mutations.html)
+2. **表单处理时引发的直接修改state中数据**问题，[见Vuex官网表单处理部分](https://vuex.vuejs.org/zh-cn/forms.html)
+最佳实践（后面的demo中会引导使用）：
+1. **使用常量替代 Mutation 事件类型**，这样可以使 linter 之类的工具发挥作用，同时把这些常量放在单独的文件中可以让你的代码合作者对整个 app 包含的 mutation 一目了然
+2. store 结构使用如下方式
+```shell
+store
+    ├── index.js          # 我们组装模块并导出 store 的地方
+    ├── actions.js        # 根级别的 action
+    ├── mutations.js      # 根级别的 mutation
+    └── modules
+        ├── cart.js       # 购物车模块
+        └── products.js   # 产品模块
+```
 
 ## Vuex安装
 
