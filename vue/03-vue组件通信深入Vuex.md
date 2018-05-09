@@ -214,4 +214,48 @@ new Vue({
 **功能2**： 清空购物车时，所有数据还原
 
 分析：
+**组件结构**：一个父组件包裹两个子组件商品列表和购物车；**数据方面**：商品列表数据来自于api接口+加入购物车数目标志，加入购物车商品列表来自商品列表的筛选；
+
+基于上面的分析，可如下组织代码
+
+（1）store中代码
+```javascript
+const state = {
+  all: []
+}
+
+const getters = {
+  // 总商品列表
+  allProducts: state => state.all,
+  // 购物车商品列表
+  cartProducts: (state, getters) => (getters.allProducts.filter(p => p.quantity)),
+  // 购物车商品总价
+  cartTotalPrice: (state, getters) => {
+    return getters.cartProducts.reduce((total, product) => {
+      return total + product.price * product.quantity
+    }, 0)
+  }
+}
+
+const mutations = {
+  setProducts (state, products) {
+    state.all = products
+  },
+  clearCartProducts (state) {
+    state.all.forEach(p => {
+      p.quantity = 0
+    })
+  }
+}
+
+const actions = {
+  // 获取数据后，加入选取数量quantity的标识，以区分是否被加入购物车
+  getAllProducts ({ commit }) {
+    shop.getProducts((res) => {
+      const newRes = res.map(p => Object.assign({}, p, {quantity: 0}))
+      commit('setProducts', newRes)
+    })
+  }
+}
+```
 
