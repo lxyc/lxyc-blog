@@ -143,7 +143,7 @@ store
         └── products.js   # 产品模块
 ```
 
-## Vuex安装
+## 2. Vuex安装
 
 （1）在项目中安装`Vuex`：
 ```
@@ -198,3 +198,20 @@ new Vue({
 })
 ```
 可以对比vue-router和vuex的安装方式：它们**均为vue插件，并在实例化组件时引入，在该实例下的所有组件均可由`this.$router`和`this.$store`的方式查询到对应的插件实例**
+
+## 3. Vuex 项目实践
+
+**需求**：完成在文章开头看到的动图功能，api数据如下：
+```javascript
+// 商品列表
+[
+  { 'id': 1, 'title': 'iPad 4 Mini', 'price': 500, 'inventory': 2 },
+  { 'id': 2, 'title': 'H&M T-Shirt White', 'price': 10, 'inventory': 10 },
+  { 'id': 3, 'title': 'Charli XCX - Sucker CD', 'price': 20, 'inventory': 5 }
+]
+```
+1. 商品增减时，库存变化，购物车列表和金额变化
+2. 清空购物车时，所有数据还原
+
+分析：
+
