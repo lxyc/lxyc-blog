@@ -259,3 +259,99 @@ const actions = {
 }
 ```
 
+（2）商品列表组件ProductList.vue
+```html
+<template>
+  <ul class="product-wrapper">
+    <li class="row header">
+      <div v-for="(th,i) in tHeader" :key="i">{{ th }}</div>
+    </li>
+    <li class="row" v-for="product in currentProducts" :key="product.id">
+      <div>{{ product.title }}</div>
+      <div>{{ product.price }}</div>
+      <div>{{ product.inventory - product.quantity }}</div>
+      <div>
+        <el-input-number
+          :min="0" :max="product.inventory"
+          v-model="product.quantity"
+          @change="handleChange">
+        </el-input-number>
+      </div>
+    </li>
+  </ul>
+</template>
+
+<script>
+import { mapGetters, mapMutations, mapActions } from 'vuex'
+
+export default {
+  data () {
+    return {
+      tHeader: ['名称', '价格', '剩余库存', '操作'],
+      currentProducts: []
+    }
+  },
+  computed: {
+    ...mapGetters(['allProducts'])
+  },
+  // 为了避免表单直接修改store中的数据，需要使用watch模拟双向绑定
+  watch: {
+    allProducts: {
+      handler (val) {
+        this.currentProducts = JSON.parse(JSON.stringify(this.allProducts))
+      },
+      deep: true
+    }
+  },
+  created () {
+    this.getAllProducts()
+  },
+  methods: {
+    handleChange () {
+      this.setProducts(this.currentProducts)
+    },
+    ...mapMutations([
+      'setProducts'
+    ]),
+    ...mapActions([
+      'getAllProducts'
+    ])
+  }
+}
+</script>
+```
+
+（3）购物车列表组件ShoppingCart.vue
+```javascript
+<template>
+  <div class="cart">
+    <p v-show="!products.length"><i>Please add some products to cart.</i></p>
+    <ul>
+      <li v-for="product in products" :key="product.id">
+        {{ product.title }} - {{ product.price }} x {{ product.quantity }}
+      </li>
+    </ul>
+    <p>Total: {{ total }}</p>
+    <el-button @click="clearCartProducts">CLEAR</el-button>
+  </div>
+</template>
+
+<script>
+import { mapGetters, mapMutations } from 'vuex'
+
+export default {
+  computed: {
+    ...mapGetters({
+      products: 'cartProducts',
+      total: 'cartTotalPrice'
+    })
+  },
+  methods: {
+    ...mapMutations([
+      'clearCartProducts'
+    ])
+  }
+}
+</script>
+```
+
