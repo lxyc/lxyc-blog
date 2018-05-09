@@ -46,7 +46,7 @@ mutations: {
 }
 
 // 组件使用
-this.$store.commit('setProducts', {//..参数})
+this.$store.commit('setProducts', {//..options})
 ```
 （4）`actions`：
 （5）`module`：
