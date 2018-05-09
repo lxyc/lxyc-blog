@@ -363,6 +363,8 @@ export default {
 
 （4）结合上面所说的最佳实践优化：
 
+首先，按照上面的tree结构将store文件夹拆分；接下来：
+
 在store中新建`mutation-types.js`文件，
 ```javascript
 export const SET_PRODUCTS = 'SET_PRODUCTS'
@@ -384,3 +386,28 @@ export default {
   }
 }
 ```
+
+`actions.js`作如下更改：
+```javascript
+import shop from '@/api/shop'
+import * as types from './mutation-types'
+
+export default {
+  // 获取数据后，加入选取数量quantity的标识，以区分是否被加入购物车
+  getAllProducts ({ commit }) {
+    shop.getProducts((res) => {
+      const newRes = res.map(p => Object.assign({}, p, {quantity: 0}))
+      commit(types.SET_PRODUCTS, newRes)
+    })
+  },
+  // 这里将mutation中的方法以action的形式输出，主要是组件中有使用mutation的方法，到时仅需引用mapActions即可，可按实际情况使用
+  setProducts ({ commit }, products) {
+    commit(types.SET_PRODUCTS, products)
+  },
+  clearCartProducts ({ commit }) {
+    commit(types.CLEAR_CART_PRODUCTS)
+  }
+}
+```
+
+在此仅将demo中的核心部分列出，完整的代码请查看[demo源码](https://github.com/lxyc/vue_blog_project)
