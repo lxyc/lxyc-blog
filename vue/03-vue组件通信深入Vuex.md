@@ -45,10 +45,27 @@ mutations: {
   }
 }
 
-// 组件使用
+// 组件中使用
 this.$store.commit('setProducts', {//..options})
 ```
-（4）`actions`：
+
+（4）`actions`：类似于mutation，**用于提交mutation，而不直接变更状态，可以包含任意异步操作**
+```javascript
+// 定义 shop为api
+actions: {
+  getAllProducts ({ commit }, payload) {
+    shop.getProducts((res) => {
+      commit('setProducts', res)
+    })
+  }
+}
+
+// 组件中使用
+this.$store.dispatch('getAllProducts', {//..payload})
+```
+
+
+
 （5）`module`：
 
 ### 1.3 各个模块的辅助函数说明
