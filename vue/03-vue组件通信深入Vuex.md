@@ -30,7 +30,7 @@ this.$store.state.allProducts
 ```javascript
 // 定义 
 getters: {
-  cartProducts(state, getters) => (getters.allProducts.filter(p => p.quantity))
+  cartProducts(state, getters, rootState) => (getters.allProducts.filter(p => p.quantity))
 }
 // 组件中获取
 this.$store.getters.cartProducts
@@ -64,9 +64,34 @@ actions: {
 this.$store.dispatch('getAllProducts', {//..payload})
 ```
 
+（5）`module`：类似于命名空间，用于项目中将各个模块的状态分开定义和操作，便于维护
+```javascript
+// 定义
+const moduleA = {
+  state: { ... },
+  mutations: { ... },
+  actions: { ... },
+  getters: { ... }
+}
 
+const moduleB = {
+  state: { ... },
+  mutations: { ... },
+  actions: { ... }
+}
 
-（5）`module`：
+const store = new Vuex.Store({
+  modules: {
+    a: moduleA,
+    b: moduleB
+  }
+})
+
+// 组件中使用
+store.state.a // -> moduleA 的状态
+store.state.b // -> moduleB 的状态
+```
+注意：**默认情况下，模块内部的 action、mutation 和 getter 是注册在全局命名空间的——这样使得多个模块能够对同一 mutation 或 action 作出响应。**仅有state是局部作用，因此，常用getters将state包装后输出，这样可以直接通过`this.$store.getters.`的方式拿到数据，而不用去访问某个模块下的state
 
 ### 1.3 各个模块的辅助函数说明
 
