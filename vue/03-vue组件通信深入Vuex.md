@@ -160,7 +160,7 @@ npm install vuex --save
 ```javascript
 import Vue from 'vue'
 import Vuex from 'vuex'
-// 修改state时在console打印
+// 修改state时在console打印，便于调试
 import createLogger from 'vuex/dist/logger'
 
 Vue.use(Vuex)
