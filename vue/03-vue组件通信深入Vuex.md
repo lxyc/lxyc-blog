@@ -137,12 +137,14 @@ this.getAllProducts()
 2. store 结构使用如下方式
 ```shell
 store
-    ├── index.js          # 我们组装模块并导出 store 的地方
+    ├── index.js          # 导出 store 的地方
+    ├── state.js          # 根级别的 state
+    ├── getters.js        # 二次包装state数据
     ├── actions.js        # 根级别的 action
     ├── mutations.js      # 根级别的 mutation
-    └── modules
-        ├── cart.js       # 购物车模块
-        └── products.js   # 产品模块
+    ├── mutation-types.js # 所有 mutation 的常量映射表
+    └── modules           # 如果有.
+        ├── ...
 ```
 
 ## 2. Vuex安装
