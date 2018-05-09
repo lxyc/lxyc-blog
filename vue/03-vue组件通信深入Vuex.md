@@ -95,6 +95,29 @@ store.state.b // -> moduleB 的状态
 
 ### 1.3 各个模块的辅助函数说明
 
+在组件中使用store中的数据或方法时，按照上面的说法，每次都要`this.$store.`的方式去获取，有没有简单一点的方式呢？辅助函数就是为了解决这个问题
+```javascript
+// 组件中使用
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
+
+export default {
+  computed: {
+    // 数组形式，当映射的计算属性的名称与 state 的子节点名称相同时使用
+    ...mapState(['allProducts'])
+    // 对象形式，可重命名 state 子节点名称
+    ...mapState({
+      products: state => state.allProducts
+    })
+    
+    // 下面为了简便，均以数组形式使用
+    ...mapGetters(['cartProducts'])
+  },
+  methods: {
+    ...mapMutations(['setProducts']),
+    ...mapActions(['getAllProducts'])
+  }
+}
+```
 
 ## Vuex安装
 
