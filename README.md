@@ -19,7 +19,6 @@
 * 《css世界》笔记
   * [01-流/元素/尺寸](https://github.com/lxyc/lxyc-blog/issues/37)  
 
-* 测试
 
 ### javascript
 
