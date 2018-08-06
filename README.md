@@ -15,6 +15,8 @@
     * [06-进阶语法（三）](https://github.com/lxyc/lxyc-blog/issues/12)
     * [07-进阶语法（四）](https://github.com/lxyc/lxyc-blog/issues/13)
 
+* 测试
+
 ### javascript
 
 * 《javascript高级程序设计》笔记
