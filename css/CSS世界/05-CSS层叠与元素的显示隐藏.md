@@ -8,7 +8,7 @@
 
 **声明：CSS中并不只是z-index能够决定元素的z轴顺序。**
 
-### 1.1 元素层叠顺序\(stacking level\)
+### 1.1 元素层叠顺序(stacking level)
 
 ![](/css/assets/stacking_level.jpg)
 
@@ -32,13 +32,13 @@
 
 （3）**扩招派**：CSS3属性创建
 
-1. **元素为flex布局元素\(父元素display:flex \| inline-flex\)，同时z-index值不是auto**
+1. **元素为flex布局元素(父元素display:flex | inline-flex\)，同时z-index值不是auto**
 2. **元素的opacity值不是1**
 3. **元素的transform值不是none**
 4. 元素mix-blend-mode值不是normal
 5. 元素的filter值不是none
 6. 元素的isolation值是isolate
-7. 元素的will-change属性值为上面2~6的任意一个\(如will-change: opacity、will-chang:transform等\)
+7. 元素的will-change属性值为上面2~6的任意一个(如will-change: opacity、will-chang:transform等)
 8. 元素的-webkit-overflow-scrolling设为touch
 
 [CSS3创建层叠上下文引证](https://codepen.io/lxyc/pen/xJmjOV)：
@@ -53,7 +53,11 @@
 ```
 
 由于层叠问题引发的bug：
-描述：
+
+**描述**：有一个绝对定位的黑色半透明层覆盖在图片上。但是，一旦图片开始走 fadeIn 淡出的 CSS3 动画，文字就跑到图片后面去了，因为文字一直是 100%透明的纯白色，文字变淡是因为跑到图片后面，而图片半透明，文字穿透显示而已
+
+**原因**：fadeIn 动画本质是 opacity 透明度的变化，“元素的opacity值不是1”时会创建层叠上下文，为1时为普通元素。导致层级发生变化时引发bug
+
 ![](/css/assets/stacking_fadeIn.gif)
 
 ### 1.3 层叠黄金准则（重点）
