@@ -39,5 +39,31 @@
 7. 元素的will-change属性值为上面2~6的任意一个\(如will-change: opacity、will-chang:transform等\)
 8. 元素的-webkit-overflow-scrolling设为touch
 
+**层叠黄金准则（重点）**
 
+（1）**谁大谁上**：当具有明显的层叠水平标识的时候，如生效的 z-index 属性值，在**同一个层叠上下文领域**，层叠水平值大的那一个覆盖小的那一个
 
+（2）**后来居上**：当元素的层叠水平一致、层叠顺序相同的时候，在 DOM 流中处于后面的元素会覆盖前面的元素
+
+下面有两个案例，请问两种情况的层叠顺序：
+```html
+<div style="position:relative; z-index:auto;">
+    <img src="1.jpg" style="position:absolute; z-index:2;">  
+</div>
+<div style="position:relative; z-index:auto;">
+    <img src="2.jpg" style="position:relative; z-index:1;">  
+</div>
+```
+
+```html
+<div style="position:relative; z-index:0;">
+    <img src="1.jpg" style="position:absolute; z-index:2;">  
+</div>
+<div style="position:relative; z-index:0;">
+    <img src="2.jpg" style="position:relative; z-index:1;">  
+</div>
+```
+
+答案：（1）1在上2在下；（2）1在下2在上
+
+分析：`z-index: auto`所在的`<div>`元素是一个普通定位元素，于是，里面的两个`<img>`元素的层叠比较就不受父级的影响，两者直接套用“谁大谁上”的准则;而`z-index`一旦变成数值，哪怕是 0，就会创建一个层叠上下文。此时遵循“层叠黄金准则”的另外一个准则“后来居上”，根据在DOM文档流中的位置决定谁在上面
