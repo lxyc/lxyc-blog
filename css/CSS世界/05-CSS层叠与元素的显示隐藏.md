@@ -96,3 +96,44 @@
 
 思考：在不居中层级错乱时，可以找找父级元素的层级与目标元素(或父级)层级比较
 
+### 1.4 zIndex可以为负值
+
+对照着上面的层叠顺序图，我们可以知道zIndex为负值时是介于背景和普通流盒子之间的，直接看一个[例子，请问下面的层叠情况](https://codepen.io/lxyc/pen/YjdLYE)
+
+```css
+/* 情况一 */
+<div class="father">
+  <div class="son"></div>
+</div>
+
+/* 情况二 */
+<div class="father transform">
+  <div class="son"></div>
+</div>
+
+.father {
+  width: 200px;
+  height: 200px;
+  background-color: rgba(0, 0, 255, .7);
+}
+.son {
+  position: relative;
+  z-index: -1;
+  width: 200px;
+  height: 100px;
+  background-color: rgba(255, 0, 0, .7);
+}
+
+.transform {
+  margin-top: 20px;
+  transform: scale(1);
+}
+```
+
+![](/css/assets/stacking_zIndex.jpg)
+
+分析：
+
+情况一：当`.father`是普通元素时，`.son`元素所在的层叠上下文元素一是`.father`的某个祖先元素；`.son`是 z-index 负值元素，`.father`是 block 元素，也就是`.son`应该在`.father`元素的后面显示，因此，`.son`会被`.father`元素的蓝色背景覆盖；
+
+情况二：当`.father`是层叠上下文元素时，z-index 负值元素在层叠上下文元素的背景上，因此，`.son`在`.father`元素的蓝色背景上；
