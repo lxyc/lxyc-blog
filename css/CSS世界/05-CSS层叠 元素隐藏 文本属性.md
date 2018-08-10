@@ -140,3 +140,16 @@
 
 ### 二、元素的显示与隐藏
 
+1. 如果希望元素不可见，同时不占据空间，辅助设备无法访问，但资源有加载，DOM 可访问，则可以直接使用 display:none 隐藏
+```css
+  .dn { display: none; }
+```
+
+2. 如果希望元素不可见，同时不占据空间，辅助设备无法访问，但显隐的时候可以有
+transition 淡入淡出效果
+```css
+.hidden {
+  position: absolute;
+  visibility: hidden;
+}
+```
