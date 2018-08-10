@@ -17,7 +17,11 @@
 
 * 《css世界》笔记
   * [01-流/元素/尺寸](https://github.com/lxyc/lxyc-blog/issues/37)  
-
+  * [02-盒模型四大家族](https://github.com/lxyc/lxyc-blog/issues/38)
+  * [03-内联元素与垂直对齐](https://github.com/lxyc/lxyc-blog/issues/39)
+  * [04-流的破坏与保护](https://github.com/lxyc/lxyc-blog/issues/40)
+  * [05-CSS层叠与元素隐藏](https://github.com/lxyc/lxyc-blog/issues/41)
+  
 ### javascript
 
 * 《javascript高级程序设计》笔记
