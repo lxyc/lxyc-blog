@@ -193,4 +193,23 @@
 }
 ```
 
-### 2.2 
+### 2.2 display与visiblity隐藏比较
+
+**空间占据**：`display:none` 隐藏后的元素不占据任何空间，而 `visibility:hidden` 隐藏的元素空间依旧存在
+
+**后代隐藏原理**：
+display属性值为none时，该元素以及所有后代元素都隐藏
+
+visibility属性值hidden时，子元素也会看不见，因为子元素继承了`visibility:hidden`
+
+因此，当子元素设置`visibility:visible;`时，子元素又会显现
+```html
+<ul style="visibility:hidden;">
+  <li style="visibility:visible;">列表1</li>
+  <li>列表 2</li>
+  <li>列表 3</li>
+  <li style="visibility:visible;">列表4</li>
+</ul>
+```
+最终列表1和列表4依然会显示
+
