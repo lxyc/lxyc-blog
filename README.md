@@ -15,10 +15,8 @@
   * [06-进阶语法（三）](https://github.com/lxyc/lxyc-blog/issues/12)
   * [07-进阶语法（四）](https://github.com/lxyc/lxyc-blog/issues/13)
 
-
 * 《css世界》笔记
   * [01-流/元素/尺寸](https://github.com/lxyc/lxyc-blog/issues/37)  
-
 
 ### javascript
 
@@ -54,7 +52,6 @@
 * [Vue生命周期深入](https://github.com/lxyc/lxyc-blog/issues/34)
 * [Vue组件通信深入](https://github.com/lxyc/lxyc-blog/issues/35)
 * [Vue组件通信深入Vuex](https://github.com/lxyc/lxyc-blog/issues/36)
-
 
 ### react
 
