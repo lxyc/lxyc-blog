@@ -148,9 +148,46 @@
 2. 如果希望元素不可见，同时不占据空间，辅助设备无法访问，但显隐的时候可以有transition 淡入淡出效果
 ```css
 .hidden {
-  position: absolute;
-  visibility: hidden;
+      position: absolute;
+      visibility: hidden;
 }
 ```
 
-3. 
+3. 如果希望元素不可见，不能点击，辅助设备无法访问，但占据空间保留，则可以使用 visibility:hidden 隐藏
+```css
+.vh { visibility: hidden; }
+```
+
+4. 如果希望元素不可见，不能点击，不占据空间，但键盘可访问，则可以使用 clip 剪裁隐藏
+```css
+.clip {
+      position: absolute;
+      clip: rect(0 0 0 0);
+}
+```
+
+5. 如果希望元素不可见，不能点击，但占据空间，且键盘可访问，则可以试试 relative 隐藏。例如，如果条件允许，也就是和层叠上下文之间存在设置了背景色的父元素， 则也可以使用更友好的 z-index 负值隐藏
+```css
+.lower {
+      position: relative;
+      z-index: -1;
+}
+```
+
+6. 如果希望元素不可见，但可以点击，而且不占据空间，则可以使用透明度
+```css
+.opacity {
+      position: absolute;
+      opacity: 0;
+      filter: Alpha(opacity=0);
+}
+```
+
+7. 如果单纯希望元素看不见，但位置保留，依然可以点可以选，则直接让透明度为 0
+```css
+.opacity {
+      opacity: 0;
+      filter: Alpha(opacity=0);
+}
+```
+
