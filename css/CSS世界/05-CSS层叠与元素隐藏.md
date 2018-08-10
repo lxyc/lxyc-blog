@@ -195,9 +195,14 @@
 
 ### 2.2 display与visiblity隐藏比较
 
-**空间占据**：`display:none` 隐藏后的元素不占据任何空间，而 `visibility:hidden` 隐藏的元素空间依旧存在
+**空间占据**：
+
+`display:none` 隐藏后的元素不占据任何空间
+
+`visibility:hidden` 隐藏的元素空间依旧存在
 
 **后代隐藏原理**：
+
 display属性值为none时，该元素以及所有后代元素都隐藏
 
 visibility属性值hidden时，子元素也会看不见，因为子元素继承了`visibility:hidden`
@@ -213,3 +218,8 @@ visibility属性值hidden时，子元素也会看不见，因为子元素继承�
 ```
 最终列表1和列表4依然会显示
 
+## 三、总结
+
+1. CSS层叠上下文理解和创建
+2. CSS层叠顺序和规则
+3. 元素隐藏的各种方式及对比
