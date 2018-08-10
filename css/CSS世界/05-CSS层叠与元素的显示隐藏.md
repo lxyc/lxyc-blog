@@ -17,9 +17,11 @@
 2. inline水平盒子指的是包括inline/inline-block/inline-table元素的“层 叠顺序”，它们都是同等级别的；  
 3. 单纯从层叠水平上看，实际上 z-index:0 和 z-index:auto 是可以看成是一样的，实际上，两者在层叠上下文领域有着根本性的差异
 
-记忆要诀：**由于网页是图文展示为主，inline会高于标准流盒子和浮动盒子**
+记忆要诀：
+1. **由于网页是图文展示为主，inline会高于标准流盒子和浮动盒子**
+2. **元素一旦成为定位元素，其 z-index 就是默认的 auto**，根据上面的层叠顺序表，就会覆盖 inline 或 block 或 float 元素
 
-### 1.2 层叠上下文\(stacking context\)
+### 1.2 层叠上下文(stacking context)
 
 **如何创建层叠上下文**  
 （1）**天生派**：页面根元素天生具有层叠上下文，称为根层叠上下文
@@ -39,7 +41,22 @@
 7. 元素的will-change属性值为上面2~6的任意一个\(如will-change: opacity、will-chang:transform等\)
 8. 元素的-webkit-overflow-scrolling设为touch
 
-**层叠黄金准则（重点）**
+[CSS3创建层叠上下文引证](https://codepen.io/lxyc/pen/xJmjOV)：
+```html
+<!-- 2在1之上 -->
+<img src="1.jpg" style="position:relative">
+<img src="2.jpg" style="transform:scale(1);">
+
+<!-- 1在2之上 -->
+<img src="2.jpg" style="transform:scale(1);">
+<img src="1.jpg" style="position:relative">
+```
+
+由于层叠问题引发的bug：
+描述：
+![](/css/assets/stacking_fadeIn.gif)
+
+### 1.3 层叠黄金准则（重点）
 
 （1）**谁大谁上**：当具有明显的层叠水平标识的时候，如生效的 z-index 属性值，在**同一个层叠上下文领域**，层叠水平值大的那一个覆盖小的那一个
 
@@ -69,3 +86,4 @@
 分析：`z-index: auto`所在的`<div>`元素是一个普通定位元素，于是，里面的两个`<img>`元素的层叠比较就不受父级的影响，两者直接套用“谁大谁上”的准则;而`z-index`一旦变成数值，哪怕是 0，就会创建一个层叠上下文。此时遵循“层叠黄金准则”的另外一个准则“后来居上”，根据在DOM文档流中的位置决定谁在上面
 
 思考：在不居中层级错乱时，可以找找父级元素的层级与目标元素(或父级)层级比较
+
