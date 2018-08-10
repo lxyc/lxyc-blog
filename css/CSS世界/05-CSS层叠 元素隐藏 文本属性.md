@@ -145,11 +145,12 @@
   .dn { display: none; }
 ```
 
-2. 如果希望元素不可见，同时不占据空间，辅助设备无法访问，但显隐的时候可以有
-transition 淡入淡出效果
+2. 如果希望元素不可见，同时不占据空间，辅助设备无法访问，但显隐的时候可以有transition 淡入淡出效果
 ```css
 .hidden {
   position: absolute;
   visibility: hidden;
 }
 ```
+
+3. 
