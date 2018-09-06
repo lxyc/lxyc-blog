@@ -100,4 +100,4 @@ handleChange() {
 }
 ```
 
-真实表现正如我们所料，但是当我们打开console的时候，会看到`Uncaught (in promise) false`
+真实表现正如我们所料，但是当我们打开console的时候，会看到`Uncaught (in promise) false`，这又是什么鬼
