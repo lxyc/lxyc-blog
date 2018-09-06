@@ -90,4 +90,14 @@ validateMax(rule, value, callback) {
 ### 填坑（重点）
 
 根据上面的写法，组件的基本功能实现了，但是有一个坑！如下：
+![](/vue/assets/threshold2.gif)
 
+很显然，左侧值是小于右侧值的，但是校验提示仍然报错。究其原因，还是关联校验的问题。既然是关联交验，改变其中一个时应该会重新校验两个。很简单，在input改变时，重新校验表单不就OK了吗
+
+```javascript
+handleChange() {
+  this.$refs.form.validate();
+}
+```
+
+真实表现正如我们所料，但是当我们打开console的时候，会看到`Uncaught (in promise) false`
