@@ -53,12 +53,35 @@ validateCom(rule, value, callback) {
   const one = Number(value);
   if (Number.isInteger(one)) {
     if (one < MIN_NUMBER) {
-      return callback(new Error('输入值必须大于0'));
+      return callback(new Error(`输入值必须大于${MIN_NUMBER}`));
     } else if (one > MAX_NUMBER) {
-      return callback(new Error('输入值必须小于100000'));
+      return callback(new Error(`输入值必须小于${MAX_NUMBER}`));
     }
     return callback();
   }
   return callback(new Error('输入值必须为正整数'));
 },
 ```
+**注意：**input输出的始终是字符串类型，需要转换成数字后进行比对
+
+关联校验：
+
+```javascript
+validateMin(rule, value, callback) {
+  const one = Number(value);
+  const max = Number(this.form.max);
+  if (!max || one < max) {
+    return callback();
+  }
+  return callback(new Error('输入值不得大于最大阈值'));
+},
+validateMax(rule, value, callback) {
+  const one = Number(value);
+  const min = Number(this.form.min);
+  if (!min || one > min) {
+    return callback();
+  }
+  return callback(new Error('输入值不得小于最小阈值'));
+},
+```
+
