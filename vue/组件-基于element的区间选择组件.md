@@ -113,4 +113,17 @@ handleMinChange() {
 handleMaxChange() {
   this.$refs.form.validateField('min');
 },
+
+// 并对外暴露操作方法
+getFormData() {
+  const ret = {};
+  this.$refs.form.validate((valid) => {
+    ret.valid = valid;
+    ret.form = this.form;
+  });
+  return ret;
+},
+resetForm() {
+  this.$refs.form.resetFields();
+},
 ```
