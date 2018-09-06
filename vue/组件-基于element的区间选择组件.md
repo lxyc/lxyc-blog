@@ -45,3 +45,20 @@ rules: {
   ],
 },
 ```
+
+公共校验方法：正整数校验、区间校验
+
+```javascript
+validateCom(rule, value, callback) {
+  const one = Number(value);
+  if (Number.isInteger(one)) {
+    if (one < MIN_NUMBER) {
+      return callback(new Error('输入值必须大于0'));
+    } else if (one > MAX_NUMBER) {
+      return callback(new Error('输入值必须小于100000'));
+    }
+    return callback();
+  }
+  return callback(new Error('输入值必须为正整数'));
+},
+```
