@@ -14,7 +14,6 @@
   * [05-进阶语法（二）](https://github.com/lxyc/lxyc-blog/issues/11)
   * [06-进阶语法（三）](https://github.com/lxyc/lxyc-blog/issues/12)
   * [07-进阶语法（四）](https://github.com/lxyc/lxyc-blog/issues/13)
-  
 
 * 《css世界》笔记
   * [01-流/元素/尺寸](https://github.com/lxyc/lxyc-blog/issues/37)  
@@ -22,7 +21,7 @@
   * [03-内联元素与垂直对齐](https://github.com/lxyc/lxyc-blog/issues/39)
   * [04-流的破坏与保护](https://github.com/lxyc/lxyc-blog/issues/40)
   * [05-CSS层叠与元素隐藏](https://github.com/lxyc/lxyc-blog/issues/41)
-  
+
 ### javascript
 
 * 《javascript高级程序设计》笔记
