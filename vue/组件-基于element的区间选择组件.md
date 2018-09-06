@@ -100,4 +100,17 @@ handleChange() {
 }
 ```
 
-真实表现正如我们所料，但是当我们打开console的时候，会看到`Uncaught (in promise) false`，这又是什么鬼
+真实表现正如我们所料，但是当我们打开console的时候，会看到`Uncaught (in promise) false`，这又是什么鬼，身为优秀的前端工程师，你定不会允许自己的代码里报错，即使不影响正常流程。
+
+经查证：Promise报错，Uncaught的意思是代表有reject状态没有被catch。究其原因，改变一个值时，校验整个表单时，改变的那个input会执行两次校验，导致异常。
+
+最后做如下修改：
+
+```javascript
+handleMinChange() {
+  this.$refs.form.validateField('max');
+},
+handleMaxChange() {
+  this.$refs.form.validateField('min');
+},
+```
