@@ -12,22 +12,36 @@
 3. 默认：左侧20，右侧100000，均必填
 4. 失焦校验
 
+页面和表单校验结构一样：
+```html
+<el-form ref="form" :model="form" :rules="rules">
+  <el-form-item prop="min">
+    <el-input v-model="form.min" />
+  </el-form-item>
+  ~
+  <el-form-item prop="max">
+    <el-input v-model="form.max" />
+  </el-form-item>
+</el-form>
+```
+
 ### 主要思路
 1. 单个表单校验：必填项校验、正整数校验、区间校验
 2. 关联校验：右侧阈值不得小于左侧阈值
 
 根据上面的思路，单个表单的校验属于公共校验方法，关联校验需要分别校验（因为对比对象不同，且提示语不同），由此在自定义校验中有了如下定义：
+
 ```javascript
 rules: {
-        min: [
-          { required: true, message: '必填项，请维护', trigger: 'blur' },
-          { validator: this.validateCom, trigger: 'blur' },
-          { validator: this.validateMin, trigger: 'blur' },
-        ],
-        max: [
-          { required: true, message: '必填项，请维护', trigger: 'blur' },
-          { validator: this.validateCom, trigger: 'blur' },
-          { validator: this.validateMax, trigger: 'blur' },
-        ],
-      },
+  min: [
+    { required: true, message: '必填项，请维护', trigger: 'blur' },
+    { validator: this.validateCom, trigger: 'blur' },
+    { validator: this.validateMin, trigger: 'blur' },
+  ],
+  max: [
+    { required: true, message: '必填项，请维护', trigger: 'blur' },
+    { validator: this.validateCom, trigger: 'blur' },
+    { validator: this.validateMax, trigger: 'blur' },
+  ],
+},
 ```
